@@ -1,0 +1,1 @@
+C:\Users\COOLI\source\repos\TaskManagement\taskmanagement.client\obj\Debug\taskmanagement.client.esproj.CoreCompileInputs.cache
