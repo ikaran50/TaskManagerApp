@@ -105,7 +105,7 @@ export default function App() {
                             <button className="btn" onClick={load}>Refresh</button>
                             <span className="badge">Open: {openCount}</span>
                         </div>
-                        {loading ? <p>Loading…</p> : <TaskList tasks={tasks} filter={filter} onToggle={toggle} onDelete={remove} load={load} />}
+                        {loading ? <p>Loading…</p> : <TaskList tasks={tasks} filter={filter} onToggle={toggle} onDelete={deleteTask} load={load} />}
                     </div>
                 </div>
             </TabPanel>
