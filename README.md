@@ -2,7 +2,7 @@
 **Setup Instructions**: 
 - Make sure you have these preRequesites in order to run the application locally.
 - **.NET 8 SDK, Node.js 20**+
-  1. Git clone the taskManagerApp repo from github into your local
+  1. Git clone the taskManagerApp repo from github into your local -> git clone git@github.com:ikaran50/TaskManagerApp.git
   2. **Backend Setup:**
      - Open a terminal and go to the location where the backend project is cloned. It should be called TaskManagement.Server
      - Run the following commands
