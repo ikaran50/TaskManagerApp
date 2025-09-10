@@ -47,7 +47,7 @@
        6.  **DELETE: api/tasks/5** This is a delete request to delete and existing task
         
   3. **Caching**: The server uses caching to cache all the tasks. This is useful for scalability because when the app grows big and there are a lot of tasks, caching would reduce
-     the amount of DB calls to improve performance. Essentially, we dont want to make a DB query each time we are fetching the tasks. Caching speeds up the response time.
+     the amount of DB calls to improve performance. Essentially, we dont want to make a DB call each time we are fetching the tasks. Caching speeds up the response time.
 
      **Cache Key** : Caching is a complex design because it involves selecting the right cacheKey. In this case, I am using 2 cacheKeys.
     **tasks_{query}_{status}_{sort} and tasks_{status}_{sort}**. The cacheKey is meant to be unique for each status, sort and query value because otherwise querying or selecting
