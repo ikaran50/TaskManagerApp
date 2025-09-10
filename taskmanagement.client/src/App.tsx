@@ -105,7 +105,7 @@ export default function App() {
                             <button className="btn" onClick={load}>Refresh</button>
                             <span className="badge">Open: {openCount}</span>
                         </div>
-                        {loading ? <p>Loading…</p> : <TaskList tasks={tasks} filter={filter} onToggle={toggle} onDelete={remove} />}
+                        {loading ? <p>Loading…</p> : <TaskList tasks={tasks} filter={filter} onToggle={toggle} onDelete={remove} load={load} />}
                     </div>
                 </div>
             </TabPanel>
@@ -121,7 +121,7 @@ export default function App() {
                         <span className="badge">Completed: {completedCount}</span>
                     </div>
                     {
-                        loading ? <p>Loading…</p> : <TaskList tasks={allTasks} filter={'done'} onToggle={toggle} onDelete={remove} />
+                        loading ? <p>Loading…</p> : <TaskList tasks={allTasks} filter={'done'} onToggle={toggle} onDelete={remove} load={load} />
                     }
                 </div>
             </TabPanel>

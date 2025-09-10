@@ -40,7 +40,11 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<TaskItem>> GetUser(int id)
     {
         var user = await _db.Users.FindAsync(id);
-        return user is null ? NotFound() : Ok(user);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        return Ok(user);
     }
 
     // POST: api/users

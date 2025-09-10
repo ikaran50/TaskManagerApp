@@ -17,6 +17,7 @@ opt.UseSqlite(connectionString));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
 
 
 // CORS for Vite dev server

@@ -7,11 +7,12 @@ interface Props {
     filter: 'all' | 'open' | 'done'
     onToggle(id: number): void
     onDelete(id: number): void
+    load(): void
 }
 
-export default function TaskList({ tasks, filter, onToggle, onDelete }: Props) {
-    const [showUserDropDown, setShowUserDropDown] = useState(true)
-    const [currentAssigneeName, setCurrentAssigneeName] = useState('')
+export default function TaskList({ tasks, filter, onToggle, onDelete, load }: Props) {
+    const [showUserDropDown, setShowUserDropDown] = useState(false)
+    const [currentTaskId, setCurrentTaskId] = useState(0)
     const filteredList = useMemo(() => {
         let list = tasks
         if (filter === 'open') list = tasks.filter(t => !t.isCompleted)
@@ -29,6 +30,13 @@ export default function TaskList({ tasks, filter, onToggle, onDelete }: Props) {
     }
 
 
+    const onAssigneeClick = (taskID) => {
+        setShowUserDropDown(true);
+        setCurrentTaskId(taskID);
+    }
+
+
+
     async function onSelect(id: number, taskID: number, userName: string) {
         // update the task with the selected userID
         const payload = {
@@ -36,12 +44,7 @@ export default function TaskList({ tasks, filter, onToggle, onDelete }: Props) {
             UserName: userName
         }
         await api.put<TaskItem[]>(`/tasks/${taskID}`, payload)
-        if (userName === null) {
-            setCurrentAssigneeName('')
-        }
-        else {
-            setCurrentAssigneeName(userName)
-        }
+        load()
     }
 
 
@@ -62,13 +65,13 @@ export default function TaskList({ tasks, filter, onToggle, onDelete }: Props) {
                         <div className="small" style={{ marginTop: 6 }}>
                             {t.dueDate ? `Due: ${new Date(t.dueDate).toLocaleDateString()}` : 'No due date'} • Created {new Date(t.createdAt).toLocaleString()}
                         </div>
-                        <p className="small"> Assignee:{currentAssigneeName === '' ? t.userName : currentAssigneeName}</p>
+                        <p className="small"> Assignee:{t.userName}</p>
                     </div>
                     <div className="row">
                         <button className="btn" onClick={() => onToggle(t.id)}>{t.isCompleted ? 'Mark Open' : 'Mark Complete'}</button>
                         <button className="btn ghost" onClick={() => onDelete(t.id)}>Delete</button>
-                        <button className="btn ghost" onClick={() => setShowUserDropDown(true)}>Assign User</button>
-                        {showUserDropDown ? <UserListDropDown taskID={t.id} onClose={onClose} onSelect={onSelect} /> : <></>}
+                        <button className="btn ghost" onClick={() => onAssigneeClick(t.id)}>Assign User</button>
+                        {(showUserDropDown && currentTaskId === t.id)? <UserListDropDown taskID={t.id} onClose={onClose} onSelect={onSelect} /> : <></>}
                     </div>
                 </div>
             ))}
