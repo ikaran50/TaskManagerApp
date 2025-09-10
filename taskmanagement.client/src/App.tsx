@@ -64,7 +64,7 @@ export default function App() {
         setTasks(prev => prev.map(t => t.id === id ? res.data : t))
     }
 
-    async function remove(id: number) {
+    async function deleteTask(id: number) {
         await api.delete(`/tasks/${id}`)
         setTasks(prev => prev.filter(t => t.id !== id))
     }
@@ -74,7 +74,7 @@ export default function App() {
         setUsers(prev => prev.map(t => t.id === id ? res.data : t))
     }
 
-    async function removeUser(id: number) {
+    async function deleteUser(id: number) {
         await api.delete(`/users/${id}`)
         setUsers(prev => prev.filter(t => t.id !== id))
     }
@@ -121,7 +121,7 @@ export default function App() {
                         <span className="badge">Completed: {completedCount}</span>
                     </div>
                     {
-                        loading ? <p>Loading…</p> : <TaskList tasks={allTasks} filter={'done'} onToggle={toggle} onDelete={remove} load={load} />
+                        loading ? <p>Loading…</p> : <TaskList tasks={allTasks} filter={'done'} onToggle={toggle} onDelete={deleteTask} load={load} />
                     }
                 </div>
             </TabPanel>
@@ -134,7 +134,7 @@ export default function App() {
                         <option value="active">Active</option>
                         <option value="inactive">InActive</option>
                     </select>
-                    {loadingUsers ? <p>loading…</p> : <UsersList users={users} filter={filterUsers} onToggle={toggleUser} onDelete={removeUser} />}
+                    {loadingUsers ? <p>loading…</p> : <UsersList users={users} filter={filterUsers} onToggle={toggleUser} onDelete={deleteUser} />}
                 </div>
             </TabPanel>
             </Tabs>
