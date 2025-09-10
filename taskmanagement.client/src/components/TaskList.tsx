@@ -70,7 +70,7 @@ export default function TaskList({ tasks, filter, onToggle, onDelete, load }: Pr
                     <div className="row">
                         <button className="btn" onClick={() => onToggle(t.id)}>{t.isCompleted ? 'Mark Open' : 'Mark Complete'}</button>
                         <button className="btn ghost" onClick={() => onDelete(t.id)}>Delete</button>
-                        <button className="btn ghost" onClick={() => onAssigneeClick(t.id)}>Assign User</button>
+                        <button className="btn ghost" onClick={() => onAssigneeClick(t.id)}>Assign/Unassign User</button>
                         {(showUserDropDown && currentTaskId === t.id)? <UserListDropDown taskID={t.id} onClose={onClose} onSelect={onSelect} /> : <></>}
                     </div>
                 </div>
