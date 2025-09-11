@@ -21,7 +21,7 @@
    1. Once you go to http://localhost:5173 you will see the main page with a taskForm from where you can add Tasks. You need to enter the Title, Description is optional and pick
       the due date from the calendar. Once you click the "Add Task" button you will see the task added below. If you select a due date prior to the current Date it will not let you
       add the task.
-   2. You can search using title and description, Filter by All or Open Tasks and also sort by DueDate.
+   2. You can search using title and description, Filter by All or Open Tasks and also sort by DueDate. To get the updated search results click on refresh button.
    3. Initially the tasks will be open and you can mark it as complete by clicking the Mark Complete Button. Once the task is marked Complete you will see those tasks in the
       "Completed Tasks" tab. You can also reOpen those tasks because as soon as you mark it complete, it will show the Mark Open option on the tasks. You can open those tasks again
       which will remove the tasks from the Completed Tasks page.
